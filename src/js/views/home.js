@@ -3,13 +3,13 @@ import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 
 export const Home = () => (
-	<div className="text-center mt-5">
-		<h1>Hello Rigo!</h1>
-		<p>
-			<img src={rigoImage} />
-		</p>
-		<a href="#" className="btn btn-success">
-			If you see this green button, bootstrap is working
-		</a>
-	</div>
+	<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 text-center mt-auto">
+            <p>
+                <img src="https://media.vandal.net/i/1280x720/10-2023/19/202310192349115_3.jpg" class="img-fluid" alt="Star Wars Poster"/>
+            </p>
+        </div>
+    </div>
+</div>
 );
