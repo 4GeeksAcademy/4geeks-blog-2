@@ -6,7 +6,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			starships: [],
 			planets: [],
 			characters: {},
-			planetoid: {},
 			favorites: [],
 			demo: [
 				{
@@ -22,6 +21,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 			]
 		},
 		actions: {
+
+			addFav:(name,id)=>{
+				const store = getStore();
+				if(!store.favorites.filter((fav) => fav === name).length){
+					setStore({favorites:[...store.favorites, name]})
+					}
+			},
+			deleteFav:(name)=>{
+				const store = getStore();
+				setStore({favorites:[...store.favorites.filter((fav) => fav !== name)]});
+				},
+
 			getUsers: async () => {
 				const url = "https://swapi.dev/api/people";
 				const options = {
