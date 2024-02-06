@@ -6,7 +6,7 @@ import { Context } from "../store/appContext";
 import { useState, useEffect, useContext } from "react";
 
 export const Home = () => (
-	<div class="container-fluid">
+	<div class="container-fluid bg-dark">
     <div class="row">
         
         <div class="col-12 text-center mt-auto">

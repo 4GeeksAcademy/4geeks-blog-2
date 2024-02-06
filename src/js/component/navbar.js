@@ -18,31 +18,31 @@ export const Navbar = () => {
         <div className="ml-auto" id="navbarNavDropdown">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="/personajes">Personajes</Link>
+              <Link className=" btn btn-outline-secondary me-2" aria-current="page" to="/personajes">Personajes</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="/planetas">Planetas</Link>
+              <Link className=" btn btn-outline-secondary me-2" aria-current="page" to="/planetas">Planetas</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="/naves">Naves</Link>
+              <Link className=" btn btn-outline-secondary me-2" aria-current="page" to="/naves">Naves</Link>
             </li>
             <li className="nav-item dropdown">
-              <Link className="nav-link" href="#" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <Link className=" btn btn-outline-warning me-2" href="#" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Favoritos
                 <span className="badge bg-secondary ms-1">{store.favorites.length}</span>
               </Link>
-              <ul className="dropdown-menu dropdown-menu-start dropdown-menu-lg-end">
+              <ul className="dropdown-menu dropdown-menu-dark dropdown-menu-start dropdown-menu-lg-end">
                 {store.favorites.map((value, index) => {
                   return (
-                    <li key={index} className="dropdown-item">
+                    <li key={index} className="dropdown-item me-2">
                       {value}
                       <button
-                        className="btn btn-danger me-2"
+                        className="btn btn-outline-danger ms-3"
                         onClick={() => {
                           actions.deleteFav(value);
                         }}
                       >
-                        <i className="fas fa-trash"></i>
+                        <i class="fas fa-trash-alt"></i>
                       </button>
                     </li>
                   );

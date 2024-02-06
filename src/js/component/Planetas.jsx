@@ -12,13 +12,13 @@ export const Planetas = () => {
   };
 
   return (
-    <div>
-      <h1 style={{ color: "black", textAlign: "left", margin: "60px" }}>Planetas</h1>
+    <div className="container-fluid bg-dark text-white d-flex flex-column">
+      <h1 style={{ color: "white", textAlign: "left", margin: "60px" }}>Planetas</h1>
 
       <div className="row m-3">
         {store.planets.map((item, index) => (
-          <div key={index} className="col-md-3 mb-3">
-            <div className="card" style={{ width: "18rem", background: "#C0C0C0" }}>
+          <div key={index} className="card m-3 col-sm-4 col-md-3 col-lg-2" style= {{width: "18rem;"}} >
+            <div className="card" style={{ width: "18rem", background: "#FFFFFF" }}>
               <img
                 className="card-img-top m-auto"
                 src={`https://starwars-visualguide.com/assets/img/planets/${index + 1}.jpg`}
@@ -34,9 +34,9 @@ export const Planetas = () => {
                   <Link to={`/detailed-planet/${index + 1}`}>
                     <button className="btn btn-outline-primary mr-3px">Info!</button>
                   </Link>
-                  <button className="btn btn-warning" onClick={() => {
+                  <button className="btn btn-outline-warning" onClick={() => {
                     actions.addFav(item.name, index)
-                  }}><i class="fab fa-gratipay"></i></button>
+                  }}><i class="fas fa-star"></i></button>
                   
                 </div>
               </div>
