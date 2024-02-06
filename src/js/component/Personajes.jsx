@@ -7,21 +7,24 @@ import { Link } from "react-router-dom";
 export const Personajes = () => {
 
     const { store, actions } = useContext(Context);
-    // store.characters = {};
     const addToFavorites = (character) => {
         actions.addToFavorites(character, 'character');
       };
+      const handleOnError = (event)=> {
+        event.target.src = "https://starwars-visualguide.com/assets/img/placeholder.jpg"
+      };  
     
         return (
             <div>
               <h1 style={{ color: "black", textAlign: "left", margin: "60px" }}>Personajes</h1>
               <div className="row m-3">
-                {store.users.map((item, ContactId) => (
-                  <div key={item.id} className="col-md-3 mb-3">
+                {store.users.map((item, index) => (
+                  <div key={index} className="col-md-3 mb-3">
                     <div className="card" style={{ width: "18rem", background: "#C0C0C0" }}>
                       <img
                         className="card-img-top m-auto"
-                        src="https://starwars-visualguide.com/assets/img/characters/5.jpg"
+                        src={`https://starwars-visualguide.com/assets/img/characters/${index+1}.jpg`}
+                        onError = {handleOnError}
                         style={{ width: "200px" }}
                         alt="Card image cap"
                       />
@@ -30,7 +33,7 @@ export const Personajes = () => {
                           <h5 className="card-title">{item.name}</h5>
                         </div>
                         <div className="card-body d-flex justify-content-between align-items-center">
-                          <Link to={"/detailed-character/" + item.id}>
+                          <Link to={`/detailed-character/${index+1}`}>
                             <button className="btn btn-outline-primary mr-3px">Info!</button>
                           </Link>
                           <button
