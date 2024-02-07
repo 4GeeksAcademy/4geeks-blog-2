@@ -5,7 +5,9 @@ import ScrollToTop from "./component/scrollToTop";
 import { Home } from "./views/home";
 import { Demo } from "./views/demo";
 import { Single } from "./views/single";
-import { DetallePersona } from "./views/DetallePersona.jsx";
+import { DetailsCharacter } from "./views/DetailsCharacter.jsx";
+import { DetailsPLanets } from "./views/DetailsPlanets.jsx";
+import { DetailsStarships } from "./views/DetailsStarships.jsx";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
@@ -30,9 +32,11 @@ const Layout = () => {
 						<Route path="/demo" element={<Demo />} />
 						<Route path="/single/:theid" element={<Single />} />
 						<Route path="/personajes" element={<Personajes />}/>
-						{/*<Route path="/detallepersona/:id" element={<DetallePersona />} />*/}
+						<Route path="/detallepersonaje/:id" element={<DetailsCharacter />}/>
 						<Route path="/planetas" element={<Planetas />}/>
+						<Route path="/detalleplanetas/:id" element={<DetailsPLanets />}/>
 						<Route path="/naves" element={<Naves />}/>
+						{/*<Route path="/detallenave/:id" element={<DetailsStarships />}/>*/}
 						<Route path="*" element={<h1>Not found!</h1>} />
 					</Routes>
 					<Footer />

@@ -2,10 +2,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 	return {
 		store: {
-			users: [],
+			users:[],
 			starships: [],
+			DetailsStarship: [],
 			planets: [],
-			characters: {},
+			DetailsPlanets:[],
+			DetailsCharacter : [],
 			favorites: [],
 			demo: [
 				{
@@ -21,7 +23,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			]
 		},
 		actions: {
-
+            //  Agrega favoritos
 			addFav:(name,id)=>{
 				const store = getStore();
 				if(!store.favorites.filter((fav) => fav === name).length){
@@ -32,7 +34,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const store = getStore();
 				setStore({favorites:[...store.favorites.filter((fav) => fav !== name)]});
 				},
-
+			// Trae los personaje de la API.	
 			getUsers: async () => {
 				const url = "https://swapi.dev/api/people";
 				const options = {
@@ -48,7 +50,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log("ERROR:", response.status, response.statusText);
 				}
 			},
-
+			// Trae las naves de la API.
 			getStarships: async () => {
 				const url = "https://swapi.dev/api/starships";
 				const options = {
@@ -64,7 +66,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log("ERROR:", response.status, response.statusText);
 				}
 			},
-
+			// Trae los planetas de la API:
 			getPlanets: async () => {
 				const url = "https://swapi.dev/api/planets";
 				const options = {
@@ -91,8 +93,52 @@ const getState = ({ getStore, getActions, setStore }) => {
 				  setStore({ favorites: [...store.favorites, { ...item, type }] });
 				}
 			 },
+			 // Trae los detalles de cada uno.
+			 getDetailsCharacter: async (index) => {
+				const url = `https://swapi.dev/api/people/${index}`;
+				const options = {
+					method: "GET"
+				}
+		
+				const response = await fetch (url, options);
+				if (!response.ok){
+					console.log('Error:', response.status, response.statusText)
+					return response.status
+				}
+				const data = await response.json()
+				console.log(data.result)
+				setStore({DetailsCharacter:data.results})
+			},
 
-			 
+			getDetailsPlanets: async (name) => {
+				const url = `https://swapi.dev/api/planets/`;
+				const options = {
+					method: "GET"
+				}
+				const response = await fetch (url, options);
+				if (!response.ok){
+					console.log('Error:', response.status, response.statusText)
+					return response.status
+				}
+				const data = await response.json()
+				console.log(data.result)
+				setStore({DetailsPlanets:data.results})
+			},
+			getDetailsStarships: async (name) => {
+				const url = `https://swapi.dev/api/starships/`;
+				const options = {
+					method: "GET"
+				}
+				const response = await fetch (url, options);
+				if (!response.ok){
+					console.log('Error:', response.status, response.statusText)
+					return response.status
+				}
+				const data = await response.json()
+				console.log(data.result)
+				setStore({DetailsStarship:data.results})
+
+			},
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
