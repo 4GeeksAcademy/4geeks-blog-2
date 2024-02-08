@@ -34,9 +34,9 @@ const Layout = () => {
 						<Route path="/personajes" element={<Personajes />}/>
 						<Route path="/detallepersonaje/:id" element={<DetailsCharacter />}/>
 						<Route path="/planetas" element={<Planetas />}/>
-						<Route path="/detalleplanetas/:id" element={<DetailsPLanets />}/>
+						<Route path="/detalleplaneta/:id" element={<DetailsPLanets />}/>
 						<Route path="/naves" element={<Naves />}/>
-						{/*<Route path="/detallenave/:id" element={<DetailsStarships />}/>*/}
+						<Route path="/detallenave/:id" element={<DetailsStarships />}/>
 						<Route path="*" element={<h1>Not found!</h1>} />
 					</Routes>
 					<Footer />

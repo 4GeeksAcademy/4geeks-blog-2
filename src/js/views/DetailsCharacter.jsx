@@ -6,12 +6,12 @@ import { Context } from "../store/appContext.js";
 
 export const DetailsCharacter = () => {
     const { store, actions } = useContext(Context);
-    
     const params = useParams();
     const index = params.id;
 
     return (
-        <div className="card text-light bg-dark m-3" style={{width : "540px;"}}>
+        <div className="container-fluid bg-dark vh-100 d-flex align-items-center justify-content-center">
+            <div className="card text-light bg-dark m-3" style={{width : "540px;"}}>
             <div className="row g-0">
                 <div className="col-md-4">
                     <img src={`https://starwars-visualguide.com/assets/img/characters/${parseInt(index) + 1}.jpg`} className="img-fluid rounded-start" alt="..."/>
@@ -30,5 +30,7 @@ export const DetailsCharacter = () => {
                 </div>
             </div>
         </div>
+        </div>
+        
     )
 }

@@ -2,17 +2,16 @@ import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext.js";
 
-
 export const Naves = () => {
-
   const { store, actions } = useContext(Context);
   const navigate = useNavigate();
+
   const handleDetails = (index) => {
-    actions.getDetailsCharacter(index);
-        navigate(`/detallenave/${index}`)
+    navigate(`/detallenave/${index}`);
   };
+
   const handleOnError = (event) => {
-    event.target.src = "https://starwars-visualguide.com/assets/img/placeholder.jpg"
+    event.target.src = "https://starwars-visualguide.com/assets/img/placeholder.jpg";
   };
 
   return (
@@ -34,10 +33,16 @@ export const Naves = () => {
                   <h5 className="card-title text-dark">{item.name}</h5>
                 </div>
                 <div className="card-body d-flex justify-content-between align-items-center">
-                <button onClick={() => handleDetails(item.index)} className="btn btn-sm btn-outline-primary">Info!</button>
-                  <button className="btn btn-outline-warning" onClick={() => {
-                    actions.addFav(item.name, index)
-                  }}><i className="fas fa-star"></i></button>
+                  <button onClick={() => handleDetails(index)} className="btn btn-sm btn-outline-primary">Info!</button>
+                  <button className={`btn ${store.favorites.includes(item.name) ? "btn-success" : "btn-outline-warning"}`} onClick={() => {
+                    if (store.favorites.includes(item.name)) {
+                      actions.removeFav(item.name);
+                    } else {
+                      actions.addFav(item.name, index);
+                    }
+                  }}>
+                    <i className="fas fa-star"></i>
+                  </button>
                 </div>
               </div>
             </div>
@@ -45,7 +50,5 @@ export const Naves = () => {
         ))}
       </div>
     </div>
-
   );
-
 };

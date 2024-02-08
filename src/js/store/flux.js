@@ -111,7 +111,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			getDetailsPlanets: async (name) => {
-				const url = `https://swapi.dev/api/planets/`;
+				const url = `https://swapi.dev/api/planets/${index}`;
 				const options = {
 					method: "GET"
 				}
@@ -125,7 +125,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({DetailsPlanets:data.results})
 			},
 			getDetailsStarships: async (name) => {
-				const url = `https://swapi.dev/api/starships/`;
+				const url = `https://swapi.dev/api/starships/${index}`;
 				const options = {
 					method: "GET"
 				}
